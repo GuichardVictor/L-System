@@ -1,0 +1,13 @@
+{
+    "rules": [
+        {
+            "key": "F",
+            "rule": "FF"
+        },
+        {
+            "key": "X",
+            "rule": "F+[-F-XF-X][+FF][--XF[+X]][++F-X]"
+        }
+    ],
+    "axiom": "---X"
+}
