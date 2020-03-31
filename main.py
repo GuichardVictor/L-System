@@ -7,7 +7,7 @@ from lsystem import actions
 from lsystem import rules_conf
 
 
-def run(rule):
+def run(rule : str) -> None:
     """ Run the rule  """
     for ele in rule:
         try:
@@ -17,7 +17,8 @@ def run(rule):
             continue
 
 
-def main():
+def main() -> None:
+    """ main function """
     turtle.speed(20)
 
     axiom, rules = rules_conf.parse(sys.argv[1])

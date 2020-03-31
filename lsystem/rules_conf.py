@@ -1,19 +1,22 @@
 import json
 import numpy as np
 
+from typing import List, Union, Dict
+
 class Rule:
-    def __init__(self, key, rules, probs=[1]):
+    def __init__(self, key : str, rules : str, probs : List[float] = [1]):
         self.key = key
         self.rules = rules
         self.probs = probs
 
-    def expand(self):
+    def expand(self) -> str:
         return np.random.choice(self.rules, p=self.probs)
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return f'Rule(key={self.key}, rules={self.rules}, probs={self.probs})'
 
-def parse(filename):
+def parse(filename : str) -> Union[str, Dict[str, Rule]]:
+    """ Parse the config file """
     data = None
     with open(filename) as json_file:
         data = json.load(json_file)
@@ -40,7 +43,7 @@ def parse(filename):
     return start, rules
 
 
-def expand_rule(rule, rules, step=0):
+def expand_rule(rule : str, rules : Dict[str, Rule], step : int = 0) -> str:
     """ Expand the axiom to the step N """
     def expand(current):
         new_rule = ''
